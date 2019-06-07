@@ -1,3 +1,8 @@
+def check_directions():
+ if chosendirection == "w":
+   print("\nyou can not go west.\n")
+
+
 directions = []
 rooms = ["x", "x", "x", "church", "parade ground", "cellhouse", "ruins of wardens house", "restrooms", "recreation yard", "Army ground", "cummunication center", "dock", "x", "x", "x"]
 
@@ -28,6 +33,8 @@ print("\nThe Year is 1952. The axis powers have taken over over almost the entir
 
 print("You are in the cellhouse")
 
+name = input("What's your name? ")
+
 while True:
   directions = []
 
@@ -48,17 +55,22 @@ while True:
 
   chosendirection = input("enter your way: ")
 
-
-
+  if chosendirection == "q":
+    print("exiting")
+    raise SystemExit(0)
+   
   if chosendirection not in directions:
+    check_directions()
     if chosendirection == "w":
       print("\nyou can not go west\n")
-    if chosendirection == "n":
+    elif chosendirection == "n":
       print("\nyou can not go north\n")
-    if chosendirection == "s":
+    elif chosendirection == "s":
       print("\nyou can not go south\n")
-    if chosendirection == "e":
+    elif chosendirection == "e":
       print("\nyou can not go east\n")
+    else:
+      print("\nThis direction is not available\n")
     continue
         
   if chosendirection == "w":
@@ -78,6 +90,6 @@ while True:
     print("\ngoing south")
 
 
+  
   print("\nYou have reached the %s." % rooms[roomnumber])
   print(locationinfo[roomnumber])
-
