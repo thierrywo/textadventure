@@ -3,6 +3,8 @@
 
 def start_text():
   print("\nThe Year is 1952. The axis powers have taken over over almost the entire world. Also the continental US has fallen. The only place that is still under the rule of the US army and navy, is Alcatraz. This orison has been fitted with the most advanced weapons of the time. You are a US marine, you wake up in the old cellhouses, which have been transformed into an underground bunker with sleeping facilities. \n ")
+  print("If you want to stop you can always type 'q'")
+  print("Every round you have to choose an action. You only need to type the first letter of the command\n")
 
 inventory = []
 directions = []
@@ -54,7 +56,7 @@ while True:
   chosendirection = input("enter your way: ")
 
   if chosendirection == "q":
-    print("\nWhy are you leaving us %s (" % name)
+    print("\nWhy are you leaving us %s? :'(" % name)
     print("exiting")
     raise SystemExit(0)
 
