@@ -5,23 +5,9 @@ def start_text():
 
 
 directions = []
-rooms = ["x", "x", "x", "church", "parade ground", "cellhouse", "ruins of wardens house", "restrooms", "recreation yard", "Army ground", "cummunication center", "dock", "pool", "trainingscamp", "boat" "x", "x", "x"]
+rooms = ["x", "x", "x", ["church", "This is an old church", "knive"], ["parade ground", "Where the army has it's parades"], ["cellhouse", "Here are the old cells"], ["ruins of wardens house", "This is a room"], ["restrooms", "This is a room"], ["recreation yard", "This is a room"], ["Army ground", "This is a room", "Binoculars"], ["cummunication center", "This is a room"], ["dock", "This is a room"], ["pool", "This is a room", "torch"], ["trainingscamp", "This is a room"], ["boat", "This is a room"], "x", "x", "x"]
  
 
-locationinfo = {
-  3  : "This is an old church",
-  4  : "Where the army has it's parades",
-  5  : "Here are the old cells",
-  6  : "This is a room",
-  7  : "This is a room",
-  8  : "This is a room",
-  9  : "This is a room",
-  10 : "This is a room",
-  11 : "This is a room",
-  12 : "This is a room",
-  13 : "This is a room",
-  14 : "This is a room",
-}
 
 directions = {
   "e"or"E"  : "east",
@@ -98,9 +84,5 @@ while True:
     roomnumber = roomnumber + 3
     print("\ngoing south")
 
-  text = "\nYou have reached the %s. " % rooms[roomnumber] + locationinfo[roomnumber] + "."
+  text = name + (", you have reached the %s. " % rooms[roomnumber][0]) + (rooms[roomnumber][1])
   print(text)
-
-
-
-
