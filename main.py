@@ -3,7 +3,7 @@
 #dit is onze functie
 def start_text():
   print("\nThe Year is 1952. The axis powers have taken over over almost the entire world. Also the continental US has fallen. The only place that is still under the rule of the US army and navy, is Alcatraz. This orison has been fitted with the most advanced weapons of the time. You are a US marine, you wake up in the old cellhouses, which have been transformed into an underground bunker with sleeping facilities. \n ")
-  print("If you want to stop you can always type 'q'. Every round you have to choose an action. You only need to type the first letter of the command so if you want to go west for instance you type 'w' and if you want to get something you type 'g'\n")
+  print("If you want to stop you can always type 'q' and if you want to see your invetory type 'i'. Every round you have to choose an action. You only need to type the first letter of the command so if you want to go west for instance you type 'w' and if you want to get something you type 'g'\n")
  
 inventory = []
 
@@ -57,7 +57,7 @@ while True:
   if len(rooms[roomnumber]) == 3:
     print("\nYou see a %s you can get it by chosing 'g'" % rooms[roomnumber][2])
 
-  print("\nYou have %s in inventory" % inventory)
+ 
 
   print("You can choose:")
   print(directions)
@@ -78,12 +78,26 @@ while True:
   
   print(chosendirection)
   
-  if chosendirection == "g" or chosendirection == "G":
+  alreadygotcommand = False
+  if (chosendirection == "g" or chosendirection == "G") and len(rooms[roomnumber]) == 3:
     inventory.append(weapon)
     print("You got the %s" %weapon)
     del rooms[roomnumber][2]
+    alreadygotcommand = True
+  elif (chosendirection == "g" or chosendirection == "G") and not len(rooms[roomnumber]) == 3:
+    print("There is nothing to get\n")
+    alreadygotcommand = True
+  elif chosendirection == "i" or chosendirection == "I":
+    print("\nYou have %s in inventory" % inventory)
+    alreadygotcommand = True
+  elif chosendirection == "d" or chosendirection == "D":
+    if not inventory:
+      print("You don't have inventory to drop")
+      alreadygotcommand = True
+  
+  
 
-  if (chosendirection not in directions) and (chosendirection.lower() not in directions):
+  if (chosendirection not in directions) and (chosendirection.lower() not in directions) and not alreadygotcommand:
    if chosendirection == "w" or chosendirection == "W":
      print("\nyou can not go west\n")
    elif chosendirection == "n" or chosendirection == "N":
@@ -116,12 +130,13 @@ while True:
 
  #Dit is de extra opdracht. Alleen als je de eerste keer in een kamer ben krijg je de roominfo
   if roomnumber in seenrooms:
-    text = name + (", you have reached the %s. " % rooms[roomnumber][0])
+    text = name + (", you are in the %s. " % rooms[roomnumber][0])
   else:
-    text = name + (", you have reached the %s. " % rooms[roomnumber][0]) + (rooms[roomnumber][1])
+    text = name + (", you are in the %s. " % rooms[roomnumber][0]) + (rooms[roomnumber][1])
     seenrooms.append(roomnumber)
 
 
   print(text)
+
 
 
