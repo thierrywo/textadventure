@@ -55,14 +55,14 @@ while True:
    weapon = rooms[roomnumber][2]
 
   if len(rooms[roomnumber]) == 3:
-    print("\nYou see a %s you can get it by chosing 'g'" % rooms[roomnumber][2])
+    print("You see a %s you can get it by chosing 'g'" % rooms[roomnumber][2])
 
  
 
   print("You can choose:")
   print(directions)
 
-  chosendirection = input("enter your way: ")
+  chosendirection = input("enter your way: ").lower()
 
 
 
@@ -76,55 +76,51 @@ while True:
   
   
   
+  
   print(chosendirection)
   
   alreadygotcommand = False
-  if (chosendirection == "g" or chosendirection == "G") and len(rooms[roomnumber]) == 3:
+
+  if (chosendirection == "g") and len(rooms[roomnumber]) == 3:
     inventory.append(weapon)
     print("You got the %s" %weapon)
     del rooms[roomnumber][2]
     alreadygotcommand = True
-  elif (chosendirection == "g" or chosendirection == "G") and not len(rooms[roomnumber]) == 3:
+  elif (chosendirection == "g") and not len(rooms[roomnumber]) == 3:
     print("There is nothing to get\n")
     alreadygotcommand = True
-  elif chosendirection == "i" or chosendirection == "I":
+  elif chosendirection == "i":
     print("\nYou have %s in inventory" % inventory)
     alreadygotcommand = True
-  elif chosendirection == "d" or chosendirection == "D":
+  elif chosendirection == "d":
     if not inventory:
       print("You don't have inventory to drop")
       alreadygotcommand = True
-  
-  
-
-  if (chosendirection not in directions) and (chosendirection.lower() not in directions) and not alreadygotcommand:
-   if chosendirection == "w" or chosendirection == "W":
-     print("\nyou can not go west\n")
-   elif chosendirection == "n" or chosendirection == "N":
-      print("\nyou can not go north\n")
-   elif chosendirection == "s" or chosendirection == "S":
-    print("\nyou can not go south\n")
-   elif chosendirection == "e" or chosendirection == "E":
-     print("\nyou can not go east\n")
-   else:
-      print("\nThis direction is not available\n")
-      continue
-        
-  if chosendirection == "w" or chosendirection == "W":
+    else:
+      print("You can drop %s" % inventory)
+  elif chosendirection == "w" and not chosendirection in directions:
+    print("\nyou can not go west\n")
+  elif chosendirection == "n":
+    print("\nyou can not go north\n")
+  elif chosendirection == "s":
+   print("\nyou can not go south\n")
+  elif chosendirection == "e":
+    print("\nyou can not go east\n")
+  elif not chosendirection in directions:
+   print("\nThis direction is not available\n")
+   continue
+  elif chosendirection == "w":
     roomnumber = roomnumber - 1
-    print("\nGoing west")
-
-  if chosendirection == "e" or chosendirection == "E":
+    print("\nGoing west\n")
+  elif chosendirection == "e":
     roomnumber = roomnumber + 1
-    print("\nGoing east")
-
-  if chosendirection == "n" or chosendirection == "N":
+    print("\nGoing east\n")
+  elif chosendirection == "n":
     roomnumber = roomnumber - 3
-    print("\nGoing north")
-
-  if chosendirection == "s" or chosendirection == "S":
+    print("\nGoing north\n")
+  elif chosendirection == "s":
     roomnumber = roomnumber + 3
-    print("\nGoing south")
+    print("\nGoing south\n")
 
 
 
