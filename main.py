@@ -15,9 +15,10 @@ rooms = ["x", "x", "x", ["church", "In this church the old prisoners of fort Alc
  
 objects = {
   "k"  : "knife",
-  "t"   : "torch",
+  "t"  : "torch",
   "b"  : "binoculars",
-  "p"  : "phone"
+  "p"  : "phone",
+  "g"  : "gun"
 }
 
 roomnumber = 5
@@ -56,12 +57,16 @@ while True:
   if len(rooms[roomnumber]) >= 3:
     print("You see a %s you can get it by chosing 'g'" % rooms[roomnumber][2])
 
- 
+  if inventory:
+    directions.append("d")
+  
+
+
 
   print("You can choose:")
   print(directions)
 
-  chosendirection = input("enter your way: ").lower()
+  chosendirection = input("enter your one letter command: ").lower()
 
 
 
@@ -85,11 +90,11 @@ while True:
     print("You got the %s" %weapon)
     del rooms[roomnumber][2]
     alreadygotcommand = True
-  elif (chosendirection == "g") and not len(rooms[roomnumber]) == 3:
+  elif (chosendirection == "g") and not len(rooms[roomnumber]) >= 3:
     print("There is nothing to get\n")
     alreadygotcommand = True
   elif chosendirection == "i":
-    print("\nYou have %s in inventory" % inventory)
+    print("\nYou have %s in inventory\n" % inventory)
     alreadygotcommand = True
   elif chosendirection == "d":
     if not inventory:
@@ -104,7 +109,12 @@ while True:
       if dropobject in inventoryoneletter:
         print("You dropped %s\n" % objects[dropobject])
         inventory.remove(objects[dropobject])
-        rooms[roomnumber].append(objects[dropobject]) 
+        rooms[roomnumber].append(objects[dropobject])
+      else:
+        if len(dropobject) == 1:
+         print("\nYou can't drop that\n")
+        else:
+          print("\nYou have to use just one letter\n")
   elif chosendirection == "w" and not chosendirection in directions:
     print("\nyou can not go west\n")
   elif chosendirection == "n" and not chosendirection in directions:
