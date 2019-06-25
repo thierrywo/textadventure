@@ -49,11 +49,17 @@ while True:
    directions.append("g")
    weapon = rooms[roomnumber][2]
 
+  if len(rooms[roomnumber]) == 3:
+    print("\nYou see a %s you can get it by chosing 'g'" % rooms[roomnumber][2])
+
+  print("\nYou have %s in inventory" % inventory)
 
   print("You can choose:")
   print(directions)
 
   chosendirection = input("enter your way: ")
+
+
 
   if chosendirection == "q":
     print("\nWhy are you leaving us %s? :'(" % name)
@@ -87,24 +93,21 @@ while True:
         
   if chosendirection == "w" or chosendirection == "W":
     roomnumber = roomnumber - 1
-    print("\ngoing west")
+    print("\nGoing west")
 
   if chosendirection == "e" or chosendirection == "E":
     roomnumber = roomnumber + 1
-    print("\ngoing east")
+    print("\nGoing east")
 
   if chosendirection == "n" or chosendirection == "N":
     roomnumber = roomnumber - 3
-    print("\ngoing north")
+    print("\nGoing north")
 
   if chosendirection == "s" or chosendirection == "S":
     roomnumber = roomnumber + 3
-    print("\ngoing south")
+    print("\nGoing south")
 
   text = name + (", you have reached the %s. " % rooms[roomnumber][0]) + (rooms[roomnumber][1])
   print(text)
 
-  print("\nYou have %s in inventory" % inventory)
 
-  if len(rooms[roomnumber]) == 3:
-    print("\nYou see: %s" % rooms[roomnumber][2])
