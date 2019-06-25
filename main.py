@@ -83,23 +83,19 @@ while True:
   
   print(chosendirection)
   
-  alreadygotcommand = False
+ 
 
   if (chosendirection == "g") and len(rooms[roomnumber]) == 3:
     inventory.append(weapon)
     print("You got the %s" %weapon)
     del rooms[roomnumber][2]
-    alreadygotcommand = True
   elif (chosendirection == "g") and not len(rooms[roomnumber]) >= 3:
     print("There is nothing to get\n")
-    alreadygotcommand = True
   elif chosendirection == "i":
     print("\nYou have %s in inventory\n" % inventory)
-    alreadygotcommand = True
   elif chosendirection == "d":
     if not inventory:
       print("You don't have inventory to drop")
-      alreadygotcommand = True
     else:
       print("You can drop %s. What do you want to drop (type first letter" % inventory)
       dropobject = input("What to drop?").lower()
