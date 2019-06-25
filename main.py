@@ -11,14 +11,13 @@ directions = []
 
 seenrooms = [5]
 
-rooms = ["x", "x", "x", ["church", "In this church the old prisoners of fort Alcatraz", "knife"], ["parade ground", "Since this is the last base of the US army, the have here their parades"], ["cellhouse", " In fort Alcatraz there where prisoners. This is the place where the prisoners lived"], ["ruins of wardens house", "Here were the prison guards"], ["restrooms", "You now what they do here ;)"], ["recreation yard", "In the past this was the place where the prisoners had their free time. Nowadays it is a place for soldiers in their spare time"], ["Army ground", "Here does the army has its parades", "binoculars"], ["cummunication center", "To make sure the communication of all the troops of the US military is good, they built this building", "Telephone"], ["dock", "This dock houses all the weaponry of the us navy."], ["pool", "Here the soldiers go to unwind.", "torch"], ["trainingscamp", "Here, the soldiers train for 8 hours a day.", "gun"], ["boat", "Here, the soldiers go out for reconnaissance"], "x", "x", "x"]
+rooms = ["x", "x", "x", ["church", "In this church the old prisoners of fort Alcatraz", "knife"], ["parade ground", "Since this is the last base of the US army, the have here their parades"], ["cellhouse", " In fort Alcatraz there where prisoners. This is the place where the prisoners lived"], ["ruins of wardens house", "Here were the prison guards"], ["restrooms", "You now what they do here ;)"], ["recreation yard", "In the past this was the place where the prisoners had their free time. Nowadays it is a place for soldiers in their spare time"], ["Army ground", "Here does the army has its parades", "binoculars"], ["cummunication center", "To make sure the communication of all the troops of the US military is good, they built this building", "phone"], ["dock", "This dock houses all the weaponry of the us navy."], ["pool", "Here the soldiers go to unwind.", "torch"], ["trainingscamp", "Here, the soldiers train for 8 hours a day.", "gun"], ["boat", "Here, the soldiers go out for reconnaissance"], "x", "x", "x"]
  
-directions = {
-  "e"or"E"  : "east",
-  "s"or"S"  : "south",
-  "w"or"W"  : "west",
-  "n"or"N"  : "north",
-  "g"or"G"  : "get"
+objects = {
+  "k"  : "knife",
+  "t"   : "torch",
+  "b"  : "binoculars",
+  "p"  : "phone"
 }
 
 roomnumber = 5
@@ -54,7 +53,7 @@ while True:
    directions.append("g")
    weapon = rooms[roomnumber][2]
 
-  if len(rooms[roomnumber]) == 3:
+  if len(rooms[roomnumber]) >= 3:
     print("You see a %s you can get it by chosing 'g'" % rooms[roomnumber][2])
 
  
@@ -97,16 +96,24 @@ while True:
       print("You don't have inventory to drop")
       alreadygotcommand = True
     else:
-      print("You can drop %s" % inventory)
+      print("You can drop %s. What do you want to drop (type first letter" % inventory)
+      dropobject = input("What to drop?").lower()
+      inventoryoneletter = []
+      for x in range(0, len(inventory)):
+        inventoryoneletter.append(inventory[x][0])
+      if dropobject in inventoryoneletter:
+        print("You dropped %s\n" % objects[dropobject])
+        inventory.remove(objects[dropobject])
+        rooms[roomnumber].append(objects[dropobject]) 
   elif chosendirection == "w" and not chosendirection in directions:
     print("\nyou can not go west\n")
-  elif chosendirection == "n":
+  elif chosendirection == "n" and not chosendirection in directions:
     print("\nyou can not go north\n")
-  elif chosendirection == "s":
+  elif chosendirection == "s" and not chosendirection in directions:
    print("\nyou can not go south\n")
-  elif chosendirection == "e":
+  elif chosendirection == "e" and not chosendirection in directions:
     print("\nyou can not go east\n")
-  elif not chosendirection in directions:
+  elif not chosendirection in directions and not chosendirection in directions:
    print("\nThis direction is not available\n")
    continue
   elif chosendirection == "w":
