@@ -1,15 +1,36 @@
+
 #dit is ons project
+inventory = []
+
+directions = []
+
+seenrooms = [5]
+
+
 
 #dit is onze functie
 def start_text():
   print("\nThe Year is 1952. The axis powers have taken over over almost the entire world. Also the continental US has fallen. The only place that is still under the rule of the US army and navy, is Alcatraz. This orison has been fitted with the most advanced weapons of the time. You are a US marine, you wake up in the old cellhouses, which have been transformed into an underground bunker with sleeping facilities. \n ")
   print("If you want to stop you can always type 'q' and if you want to see your invetory type 'i'. Every round you have to choose an action. You only need to type the first letter of the command so if you want to go west for instance you type 'w' and if you want to get something you type 'g'\n")
  
-inventory = []
+weapon = ("0")
 
-directions = []
+def possible_directions():
+  if roomnumber > 5:
+    directions.append("n")
 
-seenrooms = [5]
+  if roomnumber < 12:
+    directions.append("s")
+
+  if not roomnumber % 3 == 0:
+    directions.append("w")
+
+  if not (roomnumber - 2) % 3 == 0:
+    directions.append("e")
+
+
+
+
 
 rooms = ["x", "x", "x", ["church", "In this church the old prisoners of fort Alcatraz", "knife"], ["parade ground", "Since this is the last base of the US army, the have here their parades"], ["cellhouse", " In fort Alcatraz there where prisoners. This is the place where the prisoners lived"], ["ruins of wardens house", "Here were the prison guards"], ["restrooms", "You now what they do here ;)"], ["recreation yard", "In the past this was the place where the prisoners had their free time. Nowadays it is a place for soldiers in their spare time"], ["Army ground", "Here does the army has its parades", "binoculars"], ["cummunication center", "To make sure the communication of all the troops of the US military is good, they built this building", "phone"], ["dock", "This dock houses all the weaponry of the us navy."], ["pool", "Here the soldiers go to unwind.", "torch"], ["trainingscamp", "Here, the soldiers train for 8 hours a day.", "gun"], ["boat", "Here, the soldiers go out for reconnaissance"], "x", "x", "x"]
  
@@ -38,17 +59,9 @@ while True:
 
   directions = []
 
-  if roomnumber > 5:
-    directions.append("n")
-
-  if roomnumber < 12:
-    directions.append("s")
-
-  if not roomnumber % 3 == 0:
-    directions.append("w")
-
-  if not (roomnumber - 2) % 3 == 0:
-    directions.append("e")
+  #gebruik van de functie
+  #Hier wordt gekeken welke richtingen mogelijk zijn
+  possible_directions()
 
   if len(rooms[roomnumber]) == 3:
    directions.append("g")
@@ -87,7 +100,7 @@ while True:
 
   if (chosendirection == "g") and len(rooms[roomnumber]) == 3:
     inventory.append(weapon)
-    print("You got the %s" %weapon)
+    print("You got the %s" % weapon)
     del rooms[roomnumber][2]
   elif (chosendirection == "g") and not len(rooms[roomnumber]) >= 3:
     print("There is nothing to get\n")
@@ -146,6 +159,5 @@ while True:
 
 
   print(text)
-
 
 
