@@ -1,4 +1,5 @@
 #dit is ons project
+
 inventory = []
 
 directions = []
@@ -119,13 +120,13 @@ while True:
     if not inventory:
       print("You don't have inventory to drop")
     else:
-      print("You can drop %s. What do you want to drop (type first letter" % inventory)
+      print("You can drop %s. What do you want to drop (type first letter)" % inventory)
       dropobject = input("What to drop?").lower()
       inventoryoneletter = []
       for x in range(0, len(inventory)):
         inventoryoneletter.append(inventory[x][0])
       if dropobject in inventoryoneletter:
-        print("You dropped %s\n" % objects[dropobject])
+        print("You dropped the %s\n" % objects[dropobject])
         inventory.remove(objects[dropobject])
         rooms[roomnumber].append(objects[dropobject])
       else:
@@ -169,4 +170,13 @@ while True:
 
 
   print(text)
+
+#dit is ons project
+inventory = []
+
+directions = []
+
+#voor een extra opdracht (korte weergave roominfo)
+seenrooms = [5]
+
 
