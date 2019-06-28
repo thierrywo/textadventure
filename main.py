@@ -3,6 +3,7 @@ inventory = []
 
 directions = []
 
+#voor een extra opdracht (korte weergave roominfo)
 seenrooms = [5]
 
 
@@ -11,7 +12,8 @@ seenrooms = [5]
 def start_text():
   print("\nThe Year is 1952. The axis powers have taken over over almost the entire world. Also the continental US has fallen. The only place that is still under the rule of the US army and navy, is Alcatraz. This prison has been fitted with the most advanced weapons of the time. You are a US marine, you wake up in the old cellhouses, which have been transformed into an underground bunker with sleeping facilities. \n ")
   print("If you want to stop you can always type 'q' and if you want to see your invetory type 'i'. Every round you have to choose an action. You only need to type the first letter of the command so if you want to go west for instance you type 'w' and if you want to get something you type 'g'\n")
- 
+
+#yes schieten
 weapon = ("0")
 
 def possible_directions():
@@ -30,9 +32,11 @@ def possible_directions():
 
 
 
-
+#Dit is de list met alle roominfo
 rooms = ["x", "x", "x", ["church", "In this church the old prisoners of fort Alcatraz", "knife"], ["parade ground", "Since this is the last base of the US army, the have here their parades"], ["cellhouse", " In fort Alcatraz there where prisoners. This is the place where the prisoners lived"], ["ruins of wardens house", "Here were the prison guards"], ["restrooms", "You now what they do here ;)"], ["recreation yard", "In the past this was the place where the prisoners had their free time. Nowadays it is a place for soldiers in their spare time"], ["Army ground", "Here does the army has its parades", "binoculars"], ["cummunication center", "To make sure the communication of all the troops of the US military is good, they built this building", "phone"], ["dock", "This dock houses all the weaponry of the us navy."], ["pool", "Here the soldiers go to unwind.", "torch"], ["trainingscamp", "Here, the soldiers train for 8 hours a day.", "gun"], ["boat", "Here, the soldiers go out for reconnaissance"], "x", "x", "x"]
  
+
+#deze dictionary maakt het mogelijk om de objecten later een hele naam te geven
 objects = {
   "k"  : "knife",
   "t"  : "torch",
@@ -41,6 +45,7 @@ objects = {
   "g"  : "gun"
 }
 
+#deze dictionary maakt het mogelijk om de commands later een hele naam te geven
 directionnames = {
   "w" : "west",
   "s" : "south",
@@ -64,7 +69,7 @@ name = input("What's your name? ")
 print("\nYou are in the %s." %  (rooms[roomnumber][0]) + (rooms[roomnumber][1]))
 
 
-
+#Begin van de oneindige loop
 while True:
 
   directions = []
@@ -94,7 +99,7 @@ while True:
   chosendirection = input("enter your one letter command: ").lower()
 
 
-
+#verlaten
   if chosendirection == "q":
     print("\nWhy are you leaving us %s? :'(" % name)
     print("exiting")
