@@ -9,7 +9,7 @@ seenrooms = [5]
 
 #dit is onze functie
 def start_text():
-  print("\nThe Year is 1952. The axis powers have taken over over almost the entire world. Also the continental US has fallen. The only place that is still under the rule of the US army and navy, is Alcatraz. This orison has been fitted with the most advanced weapons of the time. You are a US marine, you wake up in the old cellhouses, which have been transformed into an underground bunker with sleeping facilities. \n ")
+  print("\nThe Year is 1952. The axis powers have taken over over almost the entire world. Also the continental US has fallen. The only place that is still under the rule of the US army and navy, is Alcatraz. This prison has been fitted with the most advanced weapons of the time. You are a US marine, you wake up in the old cellhouses, which have been transformed into an underground bunker with sleeping facilities. \n ")
   print("If you want to stop you can always type 'q' and if you want to see your invetory type 'i'. Every round you have to choose an action. You only need to type the first letter of the command so if you want to go west for instance you type 'w' and if you want to get something you type 'g'\n")
  
 weapon = ("0")
@@ -61,7 +61,7 @@ start_text()
 
 name = input("What's your name? ")
 
-print("\nYou are in the %s." % (rooms[roomnumber][0]) + (rooms[roomnumber][1]))
+print("\nYou are in the %s." %  (rooms[roomnumber][0]) + (rooms[roomnumber][1]))
 
 
 
@@ -83,9 +83,6 @@ while True:
   if inventory:
     directions.append("d")
   
-  
-  print(directionnames["n"])
-  
   for x in range (0, len(directions)):
     fulldirectionnames.append(directionnames[directions[x]])
 
@@ -103,15 +100,7 @@ while True:
     print("exiting")
     raise SystemExit(0)
 
-  if chosendirection == "r":
-    print("restarting")
-  
-  
-  
-  
-  print(chosendirection)
-  
- 
+
 
   if (chosendirection == "g") and len(rooms[roomnumber]) == 3:
     inventory.append(weapon)
@@ -175,5 +164,4 @@ while True:
 
 
   print(text)
-
 
