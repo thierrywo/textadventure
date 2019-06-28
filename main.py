@@ -1,4 +1,3 @@
-
 #dit is ons project
 inventory = []
 
@@ -42,6 +41,17 @@ objects = {
   "g"  : "gun"
 }
 
+directionnames = {
+  "w" : "west",
+  "s" : "south",
+  "n" : "north",
+  "e" : "east",
+  "g" : "get",
+  "d" : "drop" 
+  }
+
+fulldirectionnames = []
+
 roomnumber = 5
 
 
@@ -73,11 +83,16 @@ while True:
   if inventory:
     directions.append("d")
   
+  
+  print(directionnames["n"])
+  
+  for x in range (0, len(directions)):
+    fulldirectionnames.append(directionnames[directions[x]])
 
-
-
+    
   print("You can choose:")
-  print(directions)
+  print(', '.join(fulldirectionnames))
+  fulldirectionnames = []
 
   chosendirection = input("enter your one letter command: ").lower()
 
@@ -147,6 +162,7 @@ while True:
   elif chosendirection == "s":
     roomnumber = roomnumber + 3
     print("\nGoing south\n")
+
 
 
 
